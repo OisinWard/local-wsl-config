@@ -10,7 +10,7 @@
 
   - name: Template out bashrc
     template:
-      src: templates/.bashrc.j2
+      src: templates/bashrc.j2
       dest: "/home/oisin/.bashrc"
 #      become: true
 #      become_user: "{{ ansible_user_id }}"
@@ -23,7 +23,7 @@
 
   - name: Set git configuration
     ansible.builtin.template:
-      src: .gitconfig.j2
+      src: gitconfig.j2
       dest: ~/.gitconfig
       mode: '0644'
 
