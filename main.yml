@@ -10,13 +10,16 @@
 
   - name: Template out bashrc
     template:
-      src: .bashrc.j2
-      dest: ~/.bashrc
+      src: templates/.bashrc.j2
+      dest: "/home/oisin/.bashrc"
+#      become: true
+#      become_user: "{{ ansible_user_id }}"
 
   - name: Template out networks.conf.j2
     template:
       src: networks.conf.j2
       dest: /etc/vbox/networks.conf
+      force: yes
 
   - name: Set git configuration
     ansible.builtin.template:
