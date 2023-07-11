@@ -15,6 +15,11 @@
 #      become: true
 #      become_user: "{{ ansible_user_id }}"
 
+  - name: Template out dircolors
+    template:
+      src: templates/dircolors.j2
+      dest: "/home/oisin/.dircolors"
+
   - name: Template out networks.conf.j2
     template:
       src: networks.conf.j2
