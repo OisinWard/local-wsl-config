@@ -42,8 +42,13 @@
       repo: 'deb https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main'
       state: present
   
-  - name: Update apt and install vagrant
+  - name: Install vagrant
     apt:
       name: vagrant=2.3.7-1
+      state: present
+
+  - name: Install vagrant
+    apt:
+      name: terraform 
       state: present
       update_cache: true
