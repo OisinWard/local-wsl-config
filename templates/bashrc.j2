@@ -152,3 +152,8 @@ disable_git_prompt() {
     PS1="$ORIGINAL_PS1"
     export GIT_PS1_DESCRIBE_STYLE GIT_PS1_SHOWCOLORHINTS GIT_PS1_SHOWDIRTYSTATE GIT_PS1_SHOWSTASHSTATE GIT_PS1_SHOWUNTRACKEDFILES GIT_PS1_SHOWUPSTREAM PS1
 }
+
+# AWS mfa from here:
+# https://github.com/asagage/aws-mfa-script
+source ~/projects/aws-mfa-script/alias.sh
+
