@@ -32,6 +32,11 @@
       dest: ~/.gitconfig
       mode: '0644'
 
+  - name: Install ctags
+    apt: 
+      name: exuberant-ctags
+      state: latest
+
   - name: Add vagrant GPG apt Key
     apt_key:
       url: https://apt.releases.hashicorp.com/gpg
@@ -47,7 +52,7 @@
       name: vagrant=2.3.7-1
       state: present
 
-  - name: Install vagrant
+  - name: Install terraform
     apt:
       name: terraform 
       state: present
