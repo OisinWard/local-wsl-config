@@ -57,3 +57,7 @@
       name: terraform 
       state: present
       update_cache: true
+
+  - name: Install terraform autocomplete
+    shell: terraform -install-autocomplete
+    ignore_errors: yes
