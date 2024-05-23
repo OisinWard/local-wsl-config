@@ -1,6 +1,8 @@
 # To do
 
-## Add terraform autocomplete
+## Added terraform autocomplete
+
+Took the task from coding platform project. Didn't test it. Don't like ignore errors need to figure out a file that terraform autocomplete creates or updates.
 
 ## Upgrade ansible version
 
