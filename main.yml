@@ -2,6 +2,8 @@
 - name: Configure wsl with necessary changes
   hosts: localhost
   become: true
+  vars:
+    local_user: oisin
   tasks: 
   - name: Install keychain
     apt: 
@@ -11,14 +13,15 @@
   - name: Template out bashrc
     template:
       src: templates/bashrc.j2
-      dest: "/home/oisin/.bashrc"
-#      become: true
-#      become_user: "{{ ansible_user_id }}"
+      dest: "/home/{{ local_user }}/.bashrc"
+      owner: "{{ local_user }}"
+      group: "{{ local_user }}"
+      mode: '0644'
 
   - name: Template out dircolors
     template:
       src: templates/dircolors.j2
-      dest: "/home/oisin/.dircolors"
+      dest: "/home/{{ local_user }}/.dircolors"
 
   - name: Template out networks.conf.j2
     template:
@@ -58,6 +61,3 @@
       state: present
       update_cache: true
 
-  - name: Install terraform autocomplete
-    shell: terraform -install-autocomplete
-    ignore_errors: yes
