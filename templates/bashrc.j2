@@ -158,3 +158,28 @@ disable_git_prompt() {
 source ~/projects/aws-mfa-script/alias.sh
 
 complete -C /usr/bin/terraform terraform
+
+# Function to clone all repositories from a GitHub user, defaulting to OisinWard
+clone_all_repos() {
+    local USERNAME=${1:-OisinWard}  # Default to "OisinWard" if no username is provided
+
+    echo "Cloning repositories for GitHub user: $USERNAME"
+
+    # Get list of all repositories from GitHub API
+    local repos=$(curl -s "https://api.github.com/users/$USERNAME/repos?per_page=100" | grep -o 'git@[^"]*')
+
+    # Check if there are any repositories
+    if [[ -z "$repos" ]]; then
+        echo "No repositories found for user $USERNAME"
+        return 1
+    fi
+
+    # Loop through the repository URLs and clone each one
+    for repo in $repos; do
+        echo "Cloning $repo..."
+        git clone "$repo"
+    done
+
+    echo "All repositories for $USERNAME have been cloned."
+}
+
